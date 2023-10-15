@@ -2,31 +2,39 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class MenuServiceProvider extends ServiceProvider
 {
   /**
-   * Register services.
+   * Bootstrap register.
    *
    * @return void
    */
   public function register()
   {
-    //
+    $this->app->bind('menuData', function () {
+      return include base_path('menu.php');
+    });
   }
 
   /**
-   * Bootstrap services.
+   * Bootstrap boot.
    *
    * @return void
    */
   public function boot()
   {
-    $verticalMenuJson = file_get_contents(base_path('resources/menu/verticalMenu.json'));
-    $verticalMenuData = json_decode($verticalMenuJson);
+    //
+  }
 
-    View::share('menuData', $verticalMenuData);
+  /**
+   * Bootstrap provides.
+   *
+   * @return void
+   */
+  public function provides()
+  {
+    return ['menuData'];
   }
 }

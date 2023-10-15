@@ -10,45 +10,54 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * The path to the "home" route for your application.
-     *
-     * This is used by Laravel authentication to redirect users after login.
-     *
-     * @var string
-     */
-    public const HOME = '/home';
+  /**
+   * The path to the "home" route for your application.
+   *
+   * This is used by Laravel authentication to redirect users after login.
+   *
+   * @var string
+   */
+  public const HOME = '/home';
 
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->configureRateLimiting();
+  /**
+   * Define your route model bindings, pattern filters, etc.
+   *
+   * @return void
+   */
+  public function boot()
+  {
+    $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+    $this->routes(function () {
+      Route::prefix('api')
+        ->middleware('api')
+        ->namespace($this->namespace)
+        ->controller('App\Http\Controllers')
+        ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
-    }
+      Route::prefix('admin')
+        ->middleware('admin')
+        ->namespace($this->namespace)
+        ->controller('App\Http\Controllers\BackEnd')
+        ->group(base_path('routes/backEnd.php'));
 
-    /**
-     * Configure the rate limiters for the application.
-     *
-     * @return void
-     */
-    protected function configureRateLimiting()
-    {
-        RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
-        });
-    }
+      Route::prefix('web')
+        ->middleware('web')
+        ->namespace($this->namespace)
+        ->controller('App\Http\Controllers\FrontEnd')
+        ->group(base_path('routes/frontEnd.php'));
+    });
+  }
+
+  /**
+   * Configure the rate limiters for the application.
+   *
+   * @return void
+   */
+  protected function configureRateLimiting()
+  {
+    RateLimiter::for('api', function (Request $request) {
+      return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+    });
+  }
 }

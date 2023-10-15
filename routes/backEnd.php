@@ -78,11 +78,13 @@ Route::middleware(['auth'])->name('admin:')->group(function () {
   Route::get('our-services', [OurServicesController::class, 'index'])->name('our-services');
   Route::post('our-services/save', [OurServicesController::class, 'save'])->name('our-services:save');
   Route::get('our-services/fetch_data', [OurServicesController::class, 'data'])->name('our-services:fetch_data');
-  Route::post('header/delete', [OurServicesController::class, 'delete'])->name('our-services:delete');
+  Route::post('our-services/delete', [OurServicesController::class, 'delete'])->name('our-services:delete');
 
-
-
+  // why-us.
   Route::get('why-us', [WhyUsController::class, 'index'])->name('why-us');
+  Route::post('why-us/save', [WhyUsController::class, 'save'])->name('why-us:save');
+
+
   Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
   Route::get('latest-in-crope', [LatestInCropeController::class, 'index'])->name('latest-in-crope');
   Route::get('news-letter', [NewsLetterController::class, 'index'])->name('news-letter');

@@ -27,8 +27,8 @@ class NavbarController extends Controller
       $rules += [
         "key_contact_$locale"  => "required|string|max:255",
         "phone_number_$locale" => "required|string|max:255",
-        "item_title_$locale"   => "required|array|min:3",
-        "item_title_$locale"   => "required|array|min:3",
+        "item_title_$locale"   => "required|array",
+        "item_title_$locale"   => "required|array",
         "logo_$locale"         => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
       ];
     }

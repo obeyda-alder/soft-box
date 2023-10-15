@@ -102,14 +102,3 @@
         </div>
     </div>
 @endsection
-
-@section('page-style')
-    <style>
-        .text-lang {
-            color: #d6d6d6 !important;
-            padding: -1px 6px;
-            font-size: 29px;
-            text-decoration: underline;
-        }
-    </style>
-@endsection

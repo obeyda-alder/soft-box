@@ -97,5 +97,11 @@ return [
       "icon" => "menu-icon tf-icons bx bxs-wrench",
       "slug" => "admin:config",
     ],
+    [
+      "url" => route('admin:config:languages'),
+      "name" => __('menu.languages.title'),
+      "icon" => "menu-icon tf-icons bx bxs-key",
+      "slug" => "admin:config:languages",
+    ],
   ],
 ];

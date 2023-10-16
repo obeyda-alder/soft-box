@@ -59,7 +59,6 @@ Route::middleware(['auth'])->name('admin:')->group(function () {
   Route::get('users/restore/{user}', [UserController::class, 'restore'])->name('users:restore');
   Route::get('users/destroy/{user}', [UserController::class, 'destroy'])->name('users:destroy');
 
-
   // navbar.
   Route::get('navbar', [NavbarController::class, 'index'])->name('navbar');
   Route::post('navbar/return_and_update_navbar', [NavbarController::class, 'return_and_update_navbar'])->name('navbar:return_and_update_navbar');
@@ -84,10 +83,30 @@ Route::middleware(['auth'])->name('admin:')->group(function () {
   Route::get('why-us', [WhyUsController::class, 'index'])->name('why-us');
   Route::post('why-us/save', [WhyUsController::class, 'save'])->name('why-us:save');
 
-
+  // portfolio.
   Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+  Route::post('portfolio/save-section', [PortfolioController::class, 'saveSection'])->name('portfolio:save-section');
+  Route::post('portfolio/save-tab', [PortfolioController::class, 'saveTabs'])->name('portfolio:save-tab');
+  Route::get('portfolio/fetch_data', [PortfolioController::class, 'dataImages'])->name('portfolio:fetch_data');
+  Route::post('portfolio/delete', [PortfolioController::class, 'deleteImages'])->name('portfolio:delete');
+
+
+
+
   Route::get('latest-in-crope', [LatestInCropeController::class, 'index'])->name('latest-in-crope');
   Route::get('news-letter', [NewsLetterController::class, 'index'])->name('news-letter');
+
+
+
+  // footer.
   Route::get('footer', [FooterController::class, 'index'])->name('footer');
+  Route::post('footer/save', [FooterController::class, 'save'])->name('footer:save');
+
+  // config.
   Route::get('config', [ConfigController::class, 'index'])->name('config');
+  Route::post('config/add-languages', [ConfigController::class, 'addLanguages'])->name('config:add-languages');
+  Route::post('config/edit-languages', [ConfigController::class, 'editLanguages'])->name('config:edit-languages');
+  Route::post('config/delete-languages', [ConfigController::class, 'deleteLanguages'])->name('config:delete-languages');
+  Route::get('config/languages', [ConfigController::class, 'languages'])->name('config:languages');
+  Route::post('config/add-config', [ConfigController::class, 'addConfig'])->name('config:add-config');
 });

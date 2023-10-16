@@ -3,8 +3,138 @@
 @section('title', __('menu.footer.title'))
 
 @section('content')
-    <h1 class="d-flex justify-content-center align-items-center w-100">
-        footer here...
+    <form method="POST" id="form_" onsubmit="OnSubmit(event, false);" action="{{ route('admin:footer:save') }}"
+        enctype="multipart/form-data">
+        <div class="row">
+            @csrf
+            <div class="col-xl-12 col-md-12">
+                <h6 class="text-muted">
+                    <h1 class="fw-semibold fs-3">@lang('site.footer.details')</h1>
+                </h6>
 
-    </h1>
+                <div class="nav-align-top mb-4">
+                    <ul class="nav nav-tabs" role="tablist">
+                        @foreach (config('translatable.locales') as $locale => $locale_name)
+                            <li class="nav-item">
+                                <button type="button" class="nav-link {{ $loop->first ? 'active' : '' }}" role="tab"
+                                    data-bs-toggle="tab" data-bs-target="#navs-top-{{ $locale_name }}"
+                                    aria-controls="navs-top-{{ $locale_name }}"
+                                    aria-selected="true">{{ $locale_name }}</button>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="tab-content">
+                        @foreach (config('translatable.locales') as $locale => $locale_name)
+                            @php
+                                $data = collect($footer)
+                                    ->where('locale', $locale)
+                                    ->first();
+                            @endphp
+                            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
+                                id="navs-top-{{ $locale_name }}" role="tabpanel">
+                                <div class="m-2">
+                                    @include('_partials.input', [
+                                        '_id' => 'copy_right_' . $locale,
+                                        'title' => __('site.footer.copy_right.title', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'placeholder' => __('site.footer.copy_right.placeholder', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'help' => __('site.footer.copy_right.help', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'icon' => 'bx bxs-chevron-right',
+                                        'input_type' => 'text',
+                                        'input_name' => 'copy_right_' . $locale,
+                                        'value' => $data['copy_right'] ?? '',
+                                    ])
+                                </div>
+
+                                <div class="m-2">
+                                    @include('_partials.input', [
+                                        '_id' => 'phone_number_' . $locale,
+                                        'title' => __('site.footer.phone_number.title', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'placeholder' => __('site.footer.phone_number.placeholder', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'help' => __('site.footer.phone_number.help', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'icon' => 'bx bxs-chevron-right',
+                                        'input_type' => 'text',
+                                        'input_name' => 'phone_number_' . $locale,
+                                        'value' => $data['phone_number'] ?? '',
+                                    ])
+                                </div>
+
+                                <div class="m-2">
+                                    @include('_partials.input', [
+                                        '_id' => 'working_hours_' . $locale,
+                                        'title' => __('site.footer.working_hours.title', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'placeholder' => __('site.footer.working_hours.placeholder', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'help' => __('site.footer.working_hours.help', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'icon' => 'bx bxs-chevron-right',
+                                        'input_type' => 'text',
+                                        'input_name' => 'working_hours_' . $locale,
+                                        'value' => $data['working_hours'] ?? '',
+                                    ])
+                                </div>
+
+                                <div class="m-2">
+                                    @include('_partials.input', [
+                                        '_id' => 'address_' . $locale,
+                                        'title' => __('site.footer.address.title', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'placeholder' => __('site.footer.address.placeholder', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'help' => __('site.footer.address.help', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'icon' => 'bx bxs-chevron-right',
+                                        'input_type' => 'text',
+                                        'input_name' => 'address_' . $locale,
+                                        'value' => $data['address'] ?? '',
+                                    ])
+                                </div>
+
+                                <div class="m-2">
+                                    @include('_partials.input', [
+                                        '_id' => 'email_' . $locale,
+                                        'title' => __('site.footer.email.title', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'placeholder' => __('site.footer.email.placeholder', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'help' => __('site.footer.email.help', [
+                                            'lang' => $locale,
+                                        ]),
+                                        'icon' => 'bx bxs-chevron-right',
+                                        'input_type' => 'email',
+                                        'input_name' => 'email_' . $locale,
+                                        'value' => $data['email'] ?? '',
+                                    ])
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <button type="button" onclick="$('#form_').submit();" class="btn btn-primary mt-5">@lang('admin.save')</button>
+        </div>
+    </form>
 @endsection

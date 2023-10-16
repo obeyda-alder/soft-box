@@ -217,6 +217,21 @@
             transition: .2s all ease-in;
         }
 
+        .our_services_sliders .cards .slid-locale {
+            position: absolute;
+            top: 0px;
+            right: 0;
+            background: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+            color: #fff;
+            border-radius: 0 15px 0 15px;
+            width: 38px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
         .our_services_sliders .cards:hover .card-img-overlay {
             background-color: #F1EFEF
         }
@@ -322,6 +337,7 @@
                 ])`;
 
                 const columnHTML = `<div class="col-md-3 text-center cards">
+                                    <span class="slid-locale">${slid.locale}</span>
                                     <i class='bx bxs-trash trash-card' onclick="deleteCard(${slid.id})"></i>
                                         ${uploadImageHTML}
                                         <div class="m-2">${inputHTML}</div>

@@ -11,4 +11,20 @@
 <link rel="stylesheet" href="{{ asset(mix('assets/css/dashboard.css')) }}" />
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
 @yield('vendor-style')
+<style>
+    .btn-primary {
+        background-color: rgba(58, 65, 111, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:focus {
+        border: unset !important;
+        box-shadow: unset !important;
+        background-color: rgba(58, 65, 111, 1) !important;
+    }
+</style>
 @yield('page-style')

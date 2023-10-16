@@ -63,7 +63,7 @@
                     <button type="button" onclick="addItem({{ json_encode(array_keys(config('translatable.locales'))) }})"
                         class="btn btn-primary">
                         @lang('admin.items')
-                        <span class="badge bg-white text-primary" id="items_count">0</span>
+                        <span class="badge bg-white text-primary margin-left" id="items_count">0</span>
                     </button>
                 </div>
             </div>
@@ -81,6 +81,10 @@
             max-width: 70px !important;
             border: 1px solid #ddd !important;
             padding: 4px 20px !important;
+        }
+
+        .margin-left {
+            margin-left: 8px
         }
     </style>
 @endsection

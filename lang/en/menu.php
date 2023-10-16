@@ -41,4 +41,7 @@ return [
   'config'  => [
     'title' => 'Config',
   ],
+  'languages'  => [
+    'title' => 'Languages',
+  ],
 ];

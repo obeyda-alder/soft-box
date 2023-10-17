@@ -15,6 +15,7 @@ use App\Http\Controllers\BackEnd\site\LatestInCropeController;
 use App\Http\Controllers\BackEnd\Dashboard\AnalyticsControoler;
 use App\Http\Controllers\BackEnd\Authentications\LoginController;
 use App\Http\Controllers\BackEnd\Authentications\ForgotPasswordController;
+use App\Http\Controllers\BackEnd\site\ContactUsController;
 use App\Http\Controllers\loadPartialViewController;
 
 /*
@@ -94,13 +95,18 @@ Route::middleware(['auth'])->name('admin:')->group(function () {
 
 
   Route::get('latest-in-crope', [LatestInCropeController::class, 'index'])->name('latest-in-crope');
+
+  // news-letter.
   Route::get('news-letter', [NewsLetterController::class, 'index'])->name('news-letter');
-
-
+  Route::post('news-letter/save', [NewsLetterController::class, 'save'])->name('news-letter:save');
 
   // footer.
   Route::get('footer', [FooterController::class, 'index'])->name('footer');
   Route::post('footer/save', [FooterController::class, 'save'])->name('footer:save');
+
+  // contact us.
+  Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
+  Route::post('contact-us/save', [ContactUsController::class, 'save'])->name('contact-us:save');
 
   // config.
   Route::get('config', [ConfigController::class, 'index'])->name('config');

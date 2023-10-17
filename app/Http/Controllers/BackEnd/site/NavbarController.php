@@ -65,6 +65,10 @@ class NavbarController extends Controller
 
         $checkRecord = siteNavbar::where('locale', $locale)->first();
         if ($checkRecord) {
+          if ($request->hasFile('logo_' . $locale)) {
+            ImageHelper::deleteImg('navbar', $checkRecord->getRawOriginal('logo'));
+          }
+
           $checkRecord->update($site_navbar);
         } else {
           siteNavbar::create($site_navbar);

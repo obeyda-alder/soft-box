@@ -480,7 +480,7 @@ header .menu-btn {
 	-o-border-radius: 100px;
 	border-radius: 100px;
 	position: relative;
-	left: -17px;
+	/* left: -17px; */
 }
 .main-banner-text > p {
 	font-weight: 300;
@@ -632,7 +632,7 @@ header .menu-btn {
 .main-banner-text.title-hd > h1 span {
 	width: 12px;
 	height: 12px;
-	left: -5px;
+	/* left: -5px; */
 }
 .main-banner-text.title-hd > p {
 	margin-bottom: 28px;
@@ -1171,6 +1171,11 @@ footer {
 	margin-bottom: 56px;
 }
 
+.testi-thumb {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
 .testi-thumb > img {
 	filter: grayscale(100%);
 }
@@ -1297,7 +1302,7 @@ footer {
 }
 .mbl-menu li {
 	display: inline-block;
-	margin-bottom: 105px;
+	margin-bottom: 60px;
 	position: relative;
 }
 .mbl-menu:before {

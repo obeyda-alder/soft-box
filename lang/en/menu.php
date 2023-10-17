@@ -20,6 +20,9 @@ return [
   'about_us'  => [
     'title' => 'About Us',
   ],
+  'contact_us'  => [
+    'title' => 'Contact Us',
+  ],
   'our_services'  => [
     'title' => 'Our Services',
   ],

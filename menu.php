@@ -56,6 +56,12 @@ return [
       "slug" => "admin:about-us",
     ],
     [
+      "url" => route('admin:contact-us'),
+      "name" => __('menu.contact_us.title'),
+      "icon" => "menu-icon tf-icons bx bxs-cube-alt",
+      "slug" => "admin:contact-us",
+    ],
+    [
       "url" => route('admin:our-services'),
       "name" => __('menu.our_services.title'),
       "icon" => "menu-icon tf-icons bx bxs-hourglass-bottom",

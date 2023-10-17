@@ -53,6 +53,8 @@ class HomeController extends Controller
       'sitePortfolioImages',
       'siteWhyUs',
       'siteWhyUsItems',
+      'siteNewsLetter',
+      'siteContactUs'
     ];
 
     $data = [];

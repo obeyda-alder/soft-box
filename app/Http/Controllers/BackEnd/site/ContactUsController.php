@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\BackEnd\site;
 
 use Exception;
-use App\Models\siteAboutUs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Models\siteContactUs;
 
-class AboutUsController extends Controller
+class ContactUsController extends Controller
 {
   public function index()
   {
-    $about_us = siteAboutUs::orderBy('locale')->get();
-    return view('backEnd.content.about-us.index', compact('about_us'));
+    $contact_us = siteContactUs::orderBy('locale')->get();
+    return view('backEnd.content.contact-us.index', compact('contact_us'));
   }
 
   public function save(Request $request)
@@ -23,7 +23,6 @@ class AboutUsController extends Controller
       $rules += [
         "small_title_$locale" => "required|string|max:255",
         "title_$locale" => "required|string|max:255",
-        "small_description_$locale" => "required|string|max:500",
         "description_$locale" => "required|string|max:500",
       ];
     }
@@ -45,15 +44,14 @@ class AboutUsController extends Controller
           'locale'      => $locale,
           'small_title' => $request->input('small_title_' . $locale),
           'title'       => $request->input('title_' . $locale),
-          'small_description' => $request->input('small_description_' . $locale),
           'description' => $request->input('description_' . $locale),
         ];
 
-        $checkRecord = siteAboutUs::where('locale', $locale)->first();
+        $checkRecord = siteContactUs::where('locale', $locale)->first();
         if ($checkRecord) {
           $checkRecord->update($about_us);
         } else {
-          siteAboutUs::create($about_us);
+          siteContactUs::create($about_us);
         }
       }
 

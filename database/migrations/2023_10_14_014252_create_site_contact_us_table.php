@@ -13,11 +13,14 @@ return new class extends Migration
    */
   public function up()
   {
-    Schema::create('site_our_services_sliders', function (Blueprint $table) {
+    Schema::create('site_contact_us', function (Blueprint $table) {
       $table->id();
       $table->string('locale')->index();
+      $table->string('small_title');
       $table->string('title');
-      $table->string('logo')->nullable();
+      $table->text('description')->nullable();
+      $table->unique('locale');
+      $table->timestamps();
     });
   }
 
@@ -28,6 +31,6 @@ return new class extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('site_our_services_sliders');
+    Schema::dropIfExists('site_contact_us');
   }
 };

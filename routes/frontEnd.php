@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\Authentications\ForgotPasswordController;
-use App\Http\Controllers\Authentications\LoginController;
-use App\Http\Controllers\Authentications\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dashboard\AnalyticsControoler;
+use App\Http\Controllers\FrontEnd\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +15,9 @@ use App\Http\Controllers\dashboard\AnalyticsControoler;
 */
 
 Route::get('/', function () {
-  return redirect()->route('admin:dashboard');
+  return redirect()->route('web:home');
+});
+
+Route::name('web:')->group(function () {
+  Route::get('home', [HomeController::class, 'index'])->name('home');
 });

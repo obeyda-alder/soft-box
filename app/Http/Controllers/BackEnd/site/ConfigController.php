@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\BackEnd\site;
 
 use Exception;
-use App\Http\Controllers\Controller;
 use App\Models\siteConfig;
-use App\Models\siteLanguages;
+use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
+use App\Models\siteLanguages;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class ConfigController extends Controller
@@ -101,12 +102,21 @@ class ConfigController extends Controller
     }
   }
 
-  public function addConfig(Request $request)
+  protected function _validationConfig($request)
   {
-    $validator = Validator::make($request->all(), [
-      'key'   => 'required|string|max:100',
-      'value' => 'string|max:100',
-    ]);
+    $rules = [];
+
+    if ($request->input('key') === "status") {
+      $rules['key'] = 'required|string|max:100';
+      $rules['value'] = 'required|string|max:100';
+    } elseif ($request->input('key') === "logo") {
+      $rules['key'] = 'required|array';
+      $rules['key.*'] = 'string|max:100';
+      $rules['value'] = 'required|array';
+      $rules['value.*'] = 'image|mimes:jpeg,png,jpg,gif|max:2048';
+    }
+
+    $validator = Validator::make($request->all(), $rules);
 
     if ($validator->fails()) {
       $toReturn['message'] = 'fail';
@@ -116,20 +126,64 @@ class ConfigController extends Controller
       }
       return response()->json($toReturn, 200);
     }
+  }
+
+  protected function _sortData($request)
+  {
+    $keys = $request->key;
+    $values = $request->value ?? false;
+
+    if (is_array($request->key)) {
+      $keys = [];
+      $values = [];
+      foreach (array_keys(config('translatable.locales')) as $locale) {
+        $keys[] = $request->key[$locale] . '_' . $locale;
+        $values[] = ImageHelper::UploadWithResizeImage($request->value[$locale], 'configs');
+      }
+    } else {
+      $keys = $keys;
+      $values = $values;
+    }
+
+    return [
+      'keys' => $keys,
+      'values' => $values,
+    ];
+  }
+
+  public function addConfig(Request $request)
+  {
+    $this->_validationConfig($request);
+
     try {
-      if ($request->has('key')) {
-        $checkRecord = siteConfig::where('key', $request->key)->first();
+      $data = $this->_sortData($request);
+
+      if (isset($data['keys']) && is_array($data['keys'])) {
+        foreach ($data['keys'] as $index => $key) {
+          $checkRecord = siteConfig::where('key', $key)->first();
+          if ($checkRecord) {
+            ImageHelper::deleteImg('configs', $checkRecord->getRawOriginal('value'));
+            $checkRecord->update([
+              'value' => $data['values'][$index] ?? false,
+            ]);
+          } else {
+            siteConfig::create([
+              'key' => $key,
+              'value' => $data['values'][$index] ?? false,
+            ]);
+          }
+        }
+      } else {
+        $checkRecord = siteConfig::where('key', $data['keys'])->first();
         if ($checkRecord) {
           $checkRecord->update([
-            'value' => $request->value ?? false
+            'value' => $data['values'],
           ]);
         } else {
-          siteConfig::create(
-            [
-              'key'   => $request->key,
-              'value' => $request->value ?? false
-            ]
-          );
+          siteConfig::create([
+            'key' => $data['keys'],
+            'value' => $data['values'],
+          ]);
         }
       }
 
@@ -144,6 +198,7 @@ class ConfigController extends Controller
       ], 500);
     }
   }
+
 
   public function deleteLanguages(Request $request)
   {

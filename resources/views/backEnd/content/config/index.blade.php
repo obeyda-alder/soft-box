@@ -56,4 +56,42 @@
             </div>
         </div>
     </form>
+
+
+
+    <hr>
+    <form method="POST" id="add_logo" onsubmit="OnSubmit(event, false);" action="{{ route('admin:config:add-config') }}"
+        enctype="multipart/form-data">
+        @csrf
+        <div class="row">
+            @foreach (array_keys(config('translatable.locales')) as $locale)
+                <input type="hidden" name="key[{{ $locale }}]" value="logo">
+                <div class="col-md-6">
+                    @php
+                        $logo = collect($config)
+                            ->where('key', 'logo_' . $locale)
+                            ->first();
+                    @endphp
+                    @include('_partials.uploadImage', [
+                        'id' => 'logo_' . $locale,
+                        'name' => 'value[' . $locale . ']',
+                        'title' => __('site.config.logo.title', [
+                            'lang' => $locale,
+                        ]),
+                        'placeholder' => __('site.config.logo.placeholder', [
+                            'lang' => $locale,
+                        ]),
+                        'help' => __('site.config.logo.help', ['lang' => $locale]),
+                        'class' => 'file-upload-input-' . $locale,
+                        'prifex' => $locale,
+                        'src' => $logo->value,
+                    ])
+                </div>
+            @endforeach
+            <div class="col-md-12">
+                <button type="button" onclick="$('#add_logo').submit();"
+                    class="btn btn-primary m-0">@lang('admin.add')</button>
+            </div>
+        </div>
+    </form>
 @endsection

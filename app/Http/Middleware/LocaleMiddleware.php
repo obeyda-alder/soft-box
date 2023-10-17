@@ -23,7 +23,7 @@ class LocaleMiddleware
     ];
 
     if (session()->has('locale') && array_key_exists(session()->get('locale'), $availLocale)) {
-      app()->setLocale(session()->get('locale'));
+      // app()->setLocale(session()->get('locale'));
     }
 
     return $next($request);

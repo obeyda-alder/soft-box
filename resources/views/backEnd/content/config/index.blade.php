@@ -84,7 +84,7 @@
                         'help' => __('site.config.logo.help', ['lang' => $locale]),
                         'class' => 'file-upload-input-' . $locale,
                         'prifex' => $locale,
-                        'src' => $logo->value,
+                        'src' => $logo->value ?? false,
                     ])
                 </div>
             @endforeach

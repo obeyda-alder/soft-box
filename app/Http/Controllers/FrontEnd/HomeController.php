@@ -58,7 +58,7 @@ class HomeController extends Controller
     $data = [];
 
     $logo_key = 'logo_' . $selectedLocale;
-    $data['logo'] = siteConfig::where('key', $logo_key)->first()->value;
+    $data['logo'] = siteConfig::where('key', $logo_key)->first()->value ?? false;
 
     foreach ($models as $model) {
       $data[$model] = $this->fetchModel($model, $selectedLocale);

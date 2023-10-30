@@ -199,7 +199,6 @@ class ConfigController extends Controller
     }
   }
 
-
   public function deleteLanguages(Request $request)
   {
     try {

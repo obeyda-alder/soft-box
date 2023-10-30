@@ -15,6 +15,7 @@ use App\Http\Controllers\BackEnd\site\LatestInCropeController;
 use App\Http\Controllers\BackEnd\Dashboard\AnalyticsControoler;
 use App\Http\Controllers\BackEnd\Authentications\LoginController;
 use App\Http\Controllers\BackEnd\Authentications\ForgotPasswordController;
+use App\Http\Controllers\BackEnd\site\BlogsController;
 use App\Http\Controllers\BackEnd\site\ContactUsController;
 use App\Http\Controllers\loadPartialViewController;
 
@@ -53,12 +54,12 @@ Route::middleware(['auth'])->name('admin:')->group(function () {
   Route::get('users', [UserController::class, 'index'])->name('users');
   Route::get('users/dataTable', [UserController::class, 'dataTable'])->name('users:dataTable');
   Route::get('users/create/{type}', [UserController::class, 'create'])->name('users:create');
-  Route::post('users/store/{type}', [UserController::class, 'store'])->name('users:store');
+  Route::post('users/store', [UserController::class, 'store'])->name('users:store');
   Route::get('users/show/{user}', [UserController::class, 'show'])->name('users:show');
-  Route::get('users/edit/{user}', [UserController::class, 'edit'])->name('users:edit');
-  Route::get('users/delete/{user}', [UserController::class, 'delete'])->name('users:delete');
-  Route::get('users/restore/{user}', [UserController::class, 'restore'])->name('users:restore');
-  Route::get('users/destroy/{user}', [UserController::class, 'destroy'])->name('users:destroy');
+  Route::post('users/edit/{user}', [UserController::class, 'edit'])->name('users:edit');
+  Route::delete('users/delete/{user}', [UserController::class, 'delete'])->name('users:delete');
+  Route::put('users/restore/{user}', [UserController::class, 'restore'])->name('users:restore');
+  Route::delete('users/destroy/{user}', [UserController::class, 'destroy'])->name('users:destroy');
 
   // navbar.
   Route::get('navbar', [NavbarController::class, 'index'])->name('navbar');
@@ -91,10 +92,15 @@ Route::middleware(['auth'])->name('admin:')->group(function () {
   Route::get('portfolio/fetch_data', [PortfolioController::class, 'dataImages'])->name('portfolio:fetch_data');
   Route::post('portfolio/delete', [PortfolioController::class, 'deleteImages'])->name('portfolio:delete');
 
-
-
-
+  // latest-in-crope.
   Route::get('latest-in-crope', [LatestInCropeController::class, 'index'])->name('latest-in-crope');
+  Route::post('latest-in-crope/save', [LatestInCropeController::class, 'save'])->name('latest-in-crope:save');
+
+  // blogs.
+  Route::get('blogs', [BlogsController::class, 'index'])->name('blogs');
+  Route::post('blogs/save', [BlogsController::class, 'save'])->name('blogs:save');
+  Route::get('blogs/data', [BlogsController::class, 'data'])->name('blogs:data');
+  Route::post('blogs/delete', [BlogsController::class, 'delete'])->name('blogs:delete');
 
   // news-letter.
   Route::get('news-letter', [NewsLetterController::class, 'index'])->name('news-letter');

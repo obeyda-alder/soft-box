@@ -10,7 +10,7 @@
 
             <div class="col-xl-12 col-md-12 element mb-3">
                 <h6 class="text-muted">
-                    <h1 class="fw-semibold fs-3">@lang('site.why_us.details')</h1>
+                    <h1 class="fw-semibold fs-3">@lang('menu.why_us.title')</h1>
                 </h6>
 
                 <div class="nav-align-top mb-4">
@@ -36,13 +36,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'small_title_' . $locale,
-                                        'title' => __('site.why_us.small_title.title', [
+                                        'title' => __('site.fields.small_title.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.why_us.small_title.placeholder', [
+                                        'placeholder' => __('site.fields.small_title.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.why_us.small_title.help', [
+                                        'help' => __('site.fields.small_title.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -55,13 +55,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'title_' . $locale,
-                                        'title' => __('site.why_us.title.title', [
+                                        'title' => __('site.fields.title.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.why_us.title.placeholder', [
+                                        'placeholder' => __('site.fields.title.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.why_us.title.help', [
+                                        'help' => __('site.fields.title.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -74,13 +74,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'description_' . $locale,
-                                        'title' => __('site.why_us.description.title', [
+                                        'title' => __('site.fields.description.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.why_us.description.placeholder', [
+                                        'placeholder' => __('site.fields.description.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.why_us.description.help', [
+                                        'help' => __('site.fields.description.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -99,7 +99,7 @@
             @for ($i = 0; $i < 2; $i++)
                 <div class="col-md-6 element mb-3">
                     <h6 class="text-muted">
-                        <h1 class="fw-semibold fs-3">@lang('site.why_us.item')</h1>
+                        <h1 class="fw-semibold fs-3">@lang('site.fields.item.title')</h1>
                     </h6>
 
                     <div class="nav-align-top mb-4">
@@ -132,11 +132,11 @@
                                     <div class="m-2">
                                         @include('_partials.input', [
                                             '_id' => 'item_title_' . $locale,
-                                            'title' => __('site.why_us.item_title.title', ['lang' => $locale]),
-                                            'placeholder' => __('site.why_us.item_title.placeholder', [
+                                            'title' => __('site.fields.item_title.title', ['lang' => $locale]),
+                                            'placeholder' => __('site.fields.item_title.placeholder', [
                                                 'lang' => $locale,
                                             ]),
-                                            'help' => __('site.why_us.item_title.help', ['lang' => $locale]),
+                                            'help' => __('site.fields.item_title.help', ['lang' => $locale]),
                                             'icon' => 'bx bxs-chevron-right',
                                             'input_type' => 'text',
                                             'input_name' => 'item_title[' . $locale . '][]',
@@ -147,13 +147,13 @@
                                     <div class="m-2">
                                         @include('_partials.input', [
                                             '_id' => 'item_description_' . $locale,
-                                            'title' => __('site.why_us.item_description.title', [
+                                            'title' => __('site.fields.item_description.title', [
                                                 'lang' => $locale,
                                             ]),
-                                            'placeholder' => __('site.why_us.item_description.placeholder', [
+                                            'placeholder' => __('site.fields.item_description.placeholder', [
                                                 'lang' => $locale,
                                             ]),
-                                            'help' => __('site.why_us.item_description.help', ['lang' => $locale]),
+                                            'help' => __('site.fields.item_description.help', ['lang' => $locale]),
                                             'icon' => 'bx bxs-chevron-right',
                                             'input_type' => 'text',
                                             'input_name' => 'item_description[' . $locale . '][]',
@@ -170,7 +170,7 @@
             @for ($i = 0; $i < 4; $i++)
                 <div class="col-md-6 element mb-3">
                     <h6 class="text-muted">
-                        <h1 class="fw-semibold fs-3">@lang('site.why_us.item_box')</h1>
+                        <h1 class="fw-semibold fs-3">@lang('site.fields.item_box.title')</h1>
                     </h6>
 
                     <div class="nav-align-top mb-4">
@@ -203,13 +203,13 @@
                                     <div class="m-2">
                                         @include('_partials.input', [
                                             '_id' => 'box_title_' . $locale,
-                                            'title' => __('site.why_us.box_title.title', [
+                                            'title' => __('site.fields.box_title.title', [
                                                 'lang' => $locale,
                                             ]),
-                                            'placeholder' => __('site.why_us.box_title.placeholder', [
+                                            'placeholder' => __('site.fields.box_title.placeholder', [
                                                 'lang' => $locale,
                                             ]),
-                                            'help' => __('site.why_us.box_title.help', [
+                                            'help' => __('site.fields.box_title.help', [
                                                 'lang' => $locale,
                                             ]),
                                             'icon' => 'bx bxs-chevron-right',
@@ -222,13 +222,13 @@
                                     <div class="m-2">
                                         @include('_partials.input', [
                                             '_id' => 'box_box_number_' . $locale,
-                                            'title' => __('site.why_us.box_box_number.title', [
+                                            'title' => __('site.fields.box_box_number.title', [
                                                 'lang' => $locale,
                                             ]),
-                                            'placeholder' => __('site.why_us.box_box_number.placeholder', [
+                                            'placeholder' => __('site.fields.box_box_number.placeholder', [
                                                 'lang' => $locale,
                                             ]),
-                                            'help' => __('site.why_us.box_box_number.help', [
+                                            'help' => __('site.fields.box_box_number.help', [
                                                 'lang' => $locale,
                                             ]),
                                             'icon' => 'bx bxs-chevron-right',

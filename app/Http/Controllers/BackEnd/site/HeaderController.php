@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\BackEnd\site;
 
 use Exception;
+use App\Models\siteHeaders;
+use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\siteHeaders;
 use Illuminate\Support\Facades\Validator;
-use App\Helpers\ImageHelper;
 
 class HeaderController extends Controller
 {

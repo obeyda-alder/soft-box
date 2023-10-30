@@ -26,7 +26,6 @@
     <thead>
         <tr>
             <th>@lang('admin.datatable_view.users.image')</th>
-            {{-- <th>@lang('admin.datatable_view.users.id')</th> --}}
             <th>@lang('admin.datatable_view.users.name')</th>
             <th>@lang('admin.datatable_view.users.email')</th>
             <th>@lang('admin.datatable_view.users.type')</th>
@@ -50,12 +49,11 @@
             },
             columns: [{
                     data: 'image',
-                    name: 'image'
+                    name: 'image',
+                    render: function(data) {
+                        return `<img class="m-img-dataTable" loading="lazy" src="${data}"/>`;
+                    }
                 },
-                // {
-                //     data: 'id',
-                //     name: 'id'
-                // },
                 {
                     data: 'name',
                     name: 'name'

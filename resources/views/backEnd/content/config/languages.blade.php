@@ -1,11 +1,11 @@
 @extends('backEnd/layouts/navbarLayout')
 
-@section('title', __('menu.config.title'))
+@section('title', __('menu.languages.title'))
 
 @section('content')
     @forelse($languages as $language)
         @if ($loop->first)
-            <h1 class="fw-semibold">@lang('site.config.edit_languages')</h1>
+            <h1 class="fw-semibold">@lang('menu.languages.title')</h1>
         @endif
         <form method="POST" id="edit_languages_{{ $language->id }}" onsubmit="OnSubmit(event, false);"
             action="{{ route('admin:config:edit-languages') }}" enctype="multipart/form-data">
@@ -16,9 +16,9 @@
                 <div class="col-md-3">
                     @include('_partials.input', [
                         '_id' => 'code',
-                        'title' => __('site.config.code.title'),
-                        'placeholder' => __('site.config.code.placeholder'),
-                        'help' => __('site.config.code.help'),
+                        'title' => __('site.fields.code.title'),
+                        'placeholder' => __('site.fields.code.placeholder'),
+                        'help' => __('site.fields.code.help'),
                         'icon' => 'bx bxs-pencil',
                         'input_type' => 'text',
                         'input_name' => 'code',
@@ -28,9 +28,9 @@
                 <div class="col-md-3">
                     @include('_partials.input', [
                         '_id' => 'name',
-                        'title' => __('site.config.name.title'),
-                        'placeholder' => __('site.config.name.placeholder'),
-                        'help' => __('site.config.name.help'),
+                        'title' => __('site.fields.name.title'),
+                        'placeholder' => __('site.fields.name.placeholder'),
+                        'help' => __('site.fields.name.help'),
                         'icon' => 'bx bxs-pencil',
                         'input_type' => 'text',
                         'input_name' => 'name',

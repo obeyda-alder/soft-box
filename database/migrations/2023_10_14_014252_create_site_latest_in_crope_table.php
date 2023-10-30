@@ -16,16 +16,10 @@ return new class extends Migration
     Schema::create('site_latest_in_crope', function (Blueprint $table) {
       $table->id();
       $table->string('locale')->index();
+      $table->string('small_title');
       $table->string('title');
-      $table->string('slug')->unique();
-      $table->text('content');
-      $table->text('excerpt')->nullable();
-      $table->string('author');
-      $table->timestamp('published_at')->nullable();
-      $table->enum('status', ['active', 'unactive'])->default('active');
-      $table->integer('views')->default(0);
-      $table->integer('likes')->default(0);
-      $table->string('logo')->nullable();
+      $table->text('description')->nullable();
+      $table->unique('locale');
       $table->timestamps();
     });
   }

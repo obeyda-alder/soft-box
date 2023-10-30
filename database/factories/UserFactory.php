@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,11 +20,14 @@ class UserFactory extends Factory
   public function definition()
   {
     return [
-      'name' => $this->faker->name(),
-      'email' => $this->faker->unique()->safeEmail(),
+      'name'              => $this->faker->name(),
+      'email'             => $this->faker->unique()->safeEmail(),
       'email_verified_at' => now(),
-      'password' => '123321@@',
-      'remember_token' => Str::random(10),
+      'password'          => '123321@@',
+      'type'              => Arr::random(config('variables.type')),
+      'status'            => Arr::random(config('variables.status')),
+      'phone_number'      => $this->faker->phoneNumber(),
+      'remember_token'    => Str::random(10),
     ];
   }
 

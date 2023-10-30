@@ -7,7 +7,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1 class="fw-semibold fs-3">@lang('site.about_us.create_slide')</h1>
+            <h1 class="fw-semibold fs-3">@lang('menu.about_us.title')</h1>
             <form method="POST" id="form_" onsubmit="OnSubmit(event, false);" action="{{ route('admin:about-us:save') }}"
                 enctype="multipart/form-data">
                 @csrf
@@ -21,13 +21,13 @@
                         <div class="m-2">
                             @include('_partials.input', [
                                 '_id' => 'small_title_' . $locale,
-                                'title' => __('site.about_us.small_title.title', [
+                                'title' => __('site.fields.small_title.title', [
                                     'lang' => $locale,
                                 ]),
-                                'placeholder' => __('site.about_us.small_title.placeholder', [
+                                'placeholder' => __('site.fields.small_title.placeholder', [
                                     'lang' => $locale,
                                 ]),
-                                'help' => __('site.about_us.small_title.help', [
+                                'help' => __('site.fields.small_title.help', [
                                     'lang' => $locale,
                                 ]),
                                 'icon' => 'bx bxs-chevron-right',
@@ -40,13 +40,13 @@
                         <div class="m-2">
                             @include('_partials.input', [
                                 '_id' => 'title_' . $locale,
-                                'title' => __('site.about_us.title.title', [
+                                'title' => __('site.fields.title.title', [
                                     'lang' => $locale,
                                 ]),
-                                'placeholder' => __('site.about_us.title.placeholder', [
+                                'placeholder' => __('site.fields.title.placeholder', [
                                     'lang' => $locale,
                                 ]),
-                                'help' => __('site.about_us.title.help', [
+                                'help' => __('site.fields.title.help', [
                                     'lang' => $locale,
                                 ]),
                                 'icon' => 'bx bxs-chevron-right',
@@ -59,13 +59,13 @@
                         <div class="m-2">
                             @include('_partials.input', [
                                 '_id' => 'small_description_' . $locale,
-                                'title' => __('site.about_us.small_description.title', [
+                                'title' => __('site.fields.small_description.title', [
                                     'lang' => $locale,
                                 ]),
-                                'placeholder' => __('site.about_us.small_description.placeholder', [
+                                'placeholder' => __('site.fields.small_description.placeholder', [
                                     'lang' => $locale,
                                 ]),
-                                'help' => __('site.about_us.small_description.help', [
+                                'help' => __('site.fields.small_description.help', [
                                     'lang' => $locale,
                                 ]),
                                 'icon' => 'bx bxs-chevron-right',
@@ -78,13 +78,13 @@
                         <div class="m-2">
                             @include('_partials.input', [
                                 '_id' => 'description_' . $locale,
-                                'title' => __('site.about_us.description.title', [
+                                'title' => __('site.fields.description.title', [
                                     'lang' => $locale,
                                 ]),
-                                'placeholder' => __('site.about_us.description.placeholder', [
+                                'placeholder' => __('site.fields.description.placeholder', [
                                     'lang' => $locale,
                                 ]),
-                                'help' => __('site.about_us.description.help', [
+                                'help' => __('site.fields.description.help', [
                                     'lang' => $locale,
                                 ]),
                                 'icon' => 'bx bxs-chevron-right',

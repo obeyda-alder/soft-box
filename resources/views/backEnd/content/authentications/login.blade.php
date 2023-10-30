@@ -1,6 +1,6 @@
 @extends('backEnd/layouts/app')
 
-@section('title', __('auth.login'))
+@section('title', __('auth.sign_in'))
 
 @section('page-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}">

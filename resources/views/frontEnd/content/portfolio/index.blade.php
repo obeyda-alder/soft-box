@@ -9,7 +9,7 @@
                     <h1>{{ $data['sitePortfolio']->title }} <span></span></h1>
                     <p class="bdy">{{ $data['sitePortfolio']->description }}</p>
                 </div>
-                <a href="cases.html" title="" class="btn-default2">view all cases <img
+                <a href="javascript:;" title="" class="btn-default2">view all cases <img
                         src="{{ asset('assets/img/frontEnd/images/icon4.svg') }}" alt=""></a>
                 <div class="clearfix"></div>
             </div>
@@ -21,8 +21,8 @@
                             <div class="pft-item wow fadeInUp" data-wow-delay="300ms">
                                 <img src="{{ $image->image }}" alt="">
                                 <div class="figcaption">
-                                    <h2><a href="case-work.html" title="">{{ $image->title }}</a></h2>
-                                    <a href="case-work.html" title="">
+                                    <h2><a href="javascript:;" title="">{{ $image->title }}</a></h2>
+                                    <a href="javascript:;" title="">
                                         <img src="{{ asset('assets/img/frontEnd/images/icon9.svg') }}" alt="">
                                     </a>
                                 </div>

@@ -18614,13 +18614,14 @@ fieldset:disabled .btn {
   justify-content: center;
   font-size: 1rem;
   border-radius: 0.75rem;
-  height: 48px;
-  width: 48px;
+  height: 40px;
+  width: 40px;
   transition: all .2s ease-in-out;
 }
 
 .avatar img {
-  width: 100%;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .avatar+.avatar-content {

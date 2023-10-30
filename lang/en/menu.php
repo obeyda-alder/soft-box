@@ -30,10 +30,13 @@ return [
     'title' => 'Why Us',
   ],
   'portfolio'   => [
-    'title' => 'portfolio',
+    'title' => 'Portfolio',
   ],
   'latest_in_crope'   => [
     'title' => 'Latest In Crope',
+  ],
+  'blogs'   => [
+    'title' => 'Blogs',
   ],
   'news_letter'   => [
     'title' => 'News Letter',

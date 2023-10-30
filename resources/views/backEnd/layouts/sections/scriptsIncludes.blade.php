@@ -104,52 +104,49 @@
             data.append(input.name, input.value);
         });
 
-        if (alert_with_action) {
-            AlertWithAction(event, data, method, url, load = false);
-        } else {
-            event.preventDefault();
-            event.stopPropagation();
-            $.ajax({
-                data: data,
-                url: url,
-                type: method,
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    if (data.message == "fail") {
-                        var errorMessages = document.querySelectorAll('.error-message');
-                        errorMessages.forEach(function(errorMessage) {
-                            errorMessage.remove();
-                        });
-                        Object.keys(data.errors).forEach((inputName, message) => {
-
-
-
-                            const Input = document.querySelector(
-                                `input[name="${inputName}"]`);
-                            const errorSpan = document.createElement('span');
-                            errorSpan.className = 'error-message';
-                            if (data.errors.hasOwnProperty(inputName)) {
-                                errorSpan.textContent = data.errors[inputName];
-                            }
-                            Input.parentNode.insertBefore(errorSpan, Input.nextSibling);
-                        });
-                    }
-
-                    if (data.redirect_url) {
-                        window.location = data.redirect_url;
-                    }
-                    if ($('.data-table').length) {
-                        $('.data-table').DataTable().ajax.reload();
-                    }
-                    // _toastr(data.type, data.title, data.description)
-                },
-                error: function(error) {
-                    console.log(error);
-                    // _toastr('error', error.responseJSON.message, error.responseJSON.message)
+        // if (alert_with_action) {
+        //     AlertWithAction(event, data, method, url, load = false);
+        // } else {
+        event.preventDefault();
+        event.stopPropagation();
+        $.ajax({
+            data: data,
+            url: url,
+            type: method,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                if (data.message == "fail") {
+                    var errorMessages = document.querySelectorAll('.error-message');
+                    errorMessages.forEach(function(errorMessage) {
+                        errorMessage.remove();
+                    });
+                    Object.keys(data.errors).forEach((inputName, message) => {
+                        const Input = document.querySelector(
+                            `input[name="${inputName}"]`);
+                        const errorSpan = document.createElement('span');
+                        errorSpan.className = 'error-message';
+                        if (data.errors.hasOwnProperty(inputName)) {
+                            errorSpan.textContent = data.errors[inputName];
+                        }
+                        Input.parentNode.insertBefore(errorSpan, Input.nextSibling);
+                    });
                 }
-            });
-        }
+
+                if (data.redirect_url) {
+                    window.location = data.redirect_url;
+                }
+                if ($('.data-table').length) {
+                    $('.data-table').DataTable().ajax.reload();
+                }
+                // _toastr(data.type, data.title, data.description)
+            },
+            error: function(error) {
+                console.log(error);
+                // _toastr('error', error.responseJSON.message, error.responseJSON.message)
+            }
+        });
+        // }
     }
 
     $('.remove-image').hide();

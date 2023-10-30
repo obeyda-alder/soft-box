@@ -30,4 +30,9 @@ class siteLanguages extends Model
       set: fn ($value) => Carbon::parse($value)->format('Y-m-d h:i'),
     );
   }
+
+  public static function getLanguageData($status = true)
+  {
+    return self::where('status', $status)->pluck('name', 'code')->toArray();
+  }
 }

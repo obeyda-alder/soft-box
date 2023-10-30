@@ -14,8 +14,12 @@ class HomeController extends Controller
   {
     $query = app("App\\Models\\$model");
 
-    if (in_array($model, ['siteHeaders', 'siteNavbarItem', 'siteOurServicesSliders', 'sitePortfolioImages', 'siteWhyUsItems'])) {
-      if (!in_array($model, ['siteLanguages'])) {
+    if (in_array($model, ['siteHeaders', 'siteNavbarItem', 'siteBlogs', 'siteOurServicesSliders', 'siteConfig', 'sitePortfolioImages', 'siteWhyUsItems', 'siteLanguages'])) {
+      if ($model == "siteConfig") {
+        return $query->pluck('value', 'key')->toArray();
+      } else if ($model == "siteLanguages") {
+        return $query->where('status', true)->get();
+      } else if (!in_array($model, ['siteLanguages', 'siteConfig'])) {
         return $query->where('locale', $locale)->get();
       } else {
         return $query->get();
@@ -28,15 +32,14 @@ class HomeController extends Controller
   public function index(Request $request)
   {
     $this->locale = 'en';
-
     if (session()->has('locale')) {
-      $selectedLocale = session()->get('locale');
+      $locale = session()->get('locale');
     } elseif ($request->has('locale') && array_key_exists($request->locale, config('translatable.locales'))) {
-      $selectedLocale = $request->locale;
-      session()->put('locale', $selectedLocale);
+      $locale = $request->locale;
+      session()->put('locale', $locale);
     } else {
-      $selectedLocale = $this->locale;
-      session()->put('locale', $selectedLocale);
+      $locale = $this->locale;
+      session()->put('locale', $locale);
     }
 
     $models = [
@@ -52,6 +55,8 @@ class HomeController extends Controller
       'sitePortfolio',
       'sitePortfolioImages',
       'siteWhyUs',
+      'siteBlogs',
+      'siteLatestInCrope',
       'siteWhyUsItems',
       'siteNewsLetter',
       'siteContactUs'
@@ -59,13 +64,21 @@ class HomeController extends Controller
 
     $data = [];
 
-    $logo_key = 'logo_' . $selectedLocale;
+    $logo_key = 'logo_' . $locale;
     $data['logo'] = siteConfig::where('key', $logo_key)->first()->value ?? false;
+    $data['locale'] = $locale;
 
     foreach ($models as $model) {
-      $data[$model] = $this->fetchModel($model, $selectedLocale);
+      $data[$model] = $this->fetchModel($model, $locale);
     }
 
     return view('frontEnd.content.home.index', compact('data'));
+  }
+
+  public function selectLang(Request $request)
+  {
+    $this->locale = $request->locale;
+    session()->put('locale', $request->locale);
+    return true;
   }
 }

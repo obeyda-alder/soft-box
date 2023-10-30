@@ -1,9 +1,9 @@
 @extends('backEnd/layouts/navbarLayout')
 
-@section('title', __('site.navbar.title'))
+@section('title', __('menu.navbar.title'))
 
 @section('content')
-    <h4 class="fw-bold py-3 mb-4">@lang('site.navbar.title')</h4>
+    <h4 class="fw-bold py-3 mb-4">@lang('menu.navbar.title')</h4>
 
     <form method="POST" onsubmit="OnSubmit(event, false);" action="{{ route('admin:navbar:return_and_update_navbar') }}"
         enctype="multipart/form-data">
@@ -20,9 +20,9 @@
                     @include('_partials.uploadImage', [
                         'id' => 'logo_' . $locale,
                         'name' => 'logo_' . $locale,
-                        'title' => __('site.navbar.logo.title', ['lang' => $locale]),
-                        'placeholder' => __('site.navbar.logo.placeholder', ['lang' => $locale]),
-                        'help' => __('site.navbar.logo.help', ['lang' => $locale]),
+                        'title' => __('site.fields.logo.title', ['lang' => $locale]),
+                        'placeholder' => __('site.fields.logo.placeholder', ['lang' => $locale]),
+                        'help' => __('site.fields.logo.help', ['lang' => $locale]),
                         'class' => 'file-upload-input-' . $locale,
                         'prifex' => $locale,
                         'src' => $navBarData['logo'] ?? '',
@@ -31,9 +31,9 @@
                     <div class="m-2">
                         @include('_partials.input', [
                             '_id' => 'key_contact_' . $locale,
-                            'title' => __('site.navbar.key_contact.title', ['lang' => $locale]),
-                            'placeholder' => __('site.navbar.key_contact.placeholder', ['lang' => $locale]),
-                            'help' => __('site.navbar.key_contact.help', ['lang' => $locale]),
+                            'title' => __('site.fields.key_contact.title', ['lang' => $locale]),
+                            'placeholder' => __('site.fields.key_contact.placeholder', ['lang' => $locale]),
+                            'help' => __('site.fields.key_contact.help', ['lang' => $locale]),
                             'icon' => 'bx bx-phone',
                             'input_type' => 'text',
                             'input_name' => 'key_contact_' . $locale,
@@ -44,9 +44,9 @@
                     <div class="m-2">
                         @include('_partials.input', [
                             '_id' => 'phone_number_' . $locale,
-                            'title' => __('site.navbar.phone_number.title', ['lang' => $locale]),
-                            'placeholder' => __('site.navbar.phone_number.placeholder', ['lang' => $locale]),
-                            'help' => __('site.navbar.phone_number.help', ['lang' => $locale]),
+                            'title' => __('site.fields.phone_number.title', ['lang' => $locale]),
+                            'placeholder' => __('site.fields.phone_number.placeholder', ['lang' => $locale]),
+                            'help' => __('site.fields.phone_number.help', ['lang' => $locale]),
                             'icon' => 'bx bx-navigation',
                             'input_type' => 'text',
                             'input_name' => 'phone_number_' . $locale,
@@ -58,11 +58,11 @@
 
             <hr class="mt-4" />
             <div class="col-md-12 items__">
-                <small class="text-light fw-semibold">@lang('admin.create_items')</small>
+                <small class="text-light fw-semibold">@lang('site.fields.items.create_items')</small>
                 <div class="demo-inline-spacing">
                     <button type="button" onclick="addItem({{ json_encode(array_keys(config('translatable.locales'))) }})"
                         class="btn btn-primary">
-                        @lang('admin.items')
+                        @lang('site.fields.items.title')
                         <span class="badge bg-white text-primary margin-left" id="items_count">0</span>
                     </button>
                 </div>
@@ -99,14 +99,14 @@
             let template = '';
             navBarItem.forEach(nav => {
                 template += `<div class="col-md-6">
-                              <label class="form-label" for="basic-icon-default-email">{{ __('site.navbar.item_title_.title', ['lang' => ' + ${nav.locale} + ', 'count' => ' + count + ']) }}</label>
+                              <label class="form-label" for="basic-icon-default-email">{{ __('site.fields.items.item_title', ['lang' => ' + ${nav.locale} + ', 'count' => ' + count + ']) }}</label>
                                 <div class="input-group input-group-merge">
                                   <span class="input-group-text"><i class="bx bx-sitemap"></i></span>
                                   <input type="text" name="item_title_${nav.locale}[]" id="${nav.id}" class="form-control"
-                                  placeholder="{{ __('site.navbar.item_title_.placeholder', ['lang' => ' + ${nav.locale} + ', 'count' => ' + count + ']) }}" value="${nav.title}" />
+                                  placeholder="{{ __('site.fields.item_title.placeholder', ['lang' => ' + ${nav.locale} + ', 'count' => ' + count + ']) }}" value="${nav.title}" />
                                   <input class="form-control order-input" type="number" name="order[]" value="${nav.order}" />
                                 </div>
-                                <div class="form-text">{{ __('site.navbar.item_title_.help', ['lang' => ' + ${nav.locale} + ', 'count' => ' + count + ']) }}</div>
+                                <div class="form-text">{{ __('site.fields.item_title.help', ['lang' => ' + ${nav.locale} + ', 'count' => ' + count + ']) }}</div>
                               </div>`
             });
             const targetElement = document.querySelector('.items__');
@@ -136,10 +136,10 @@
         function loadPartial(locale, count) {
             var url = $('.target-element').data('url');
             var _id = `item_title_${locale}`;
-            var title = '{{ __('site.navbar.item_title_.title', ['lang' => ' + locale + ', 'count' => ' + count + ']) }}';
+            var title = '{{ __('site.fields.item_title.title', ['lang' => ' + locale + ', 'count' => ' + count + ']) }}';
             var placeholder =
-                '{{ __('site.navbar.item_title_.placeholder', ['lang' => ' + locale + ', 'count' => ' + count + ']) }}';
-            var help = '{{ __('site.navbar.item_title_.help', ['lang' => ' + locale + ', 'count' => ' + count + ']) }}';
+                '{{ __('site.fields.item_title.placeholder', ['lang' => ' + locale + ', 'count' => ' + count + ']) }}';
+            var help = '{{ __('site.fields.item_title.help', ['lang' => ' + locale + ', 'count' => ' + count + ']) }}';
 
 
             return new Promise(function(resolve, reject) {

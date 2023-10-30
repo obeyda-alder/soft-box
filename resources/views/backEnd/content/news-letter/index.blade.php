@@ -9,7 +9,7 @@
 
         <div class="col-xl-12 col-md-12 element mb-3">
             <h6 class="text-muted">
-                <h1 class="fw-semibold fs-3">@lang('site.news_letter.details')</h1>
+                <h1 class="fw-semibold fs-3">@lang('menu.news_letter.title')</h1>
             </h6>
 
             <div class="nav-align-top mb-4">
@@ -35,13 +35,13 @@
                             <div class="m-2">
                                 @include('_partials.input', [
                                     '_id' => 'small_title_' . $locale,
-                                    'title' => __('site.news_letter.small_title.title', [
+                                    'title' => __('site.fields.small_title.title', [
                                         'lang' => $locale,
                                     ]),
-                                    'placeholder' => __('site.news_letter.small_title.placeholder', [
+                                    'placeholder' => __('site.fields.small_title.placeholder', [
                                         'lang' => $locale,
                                     ]),
-                                    'help' => __('site.news_letter.small_title.help', [
+                                    'help' => __('site.fields.small_title.help', [
                                         'lang' => $locale,
                                     ]),
                                     'icon' => 'bx bxs-chevron-right',
@@ -54,13 +54,13 @@
                             <div class="m-2">
                                 @include('_partials.input', [
                                     '_id' => 'title_' . $locale,
-                                    'title' => __('site.news_letter.title.title', [
+                                    'title' => __('site.fields.title.title', [
                                         'lang' => $locale,
                                     ]),
-                                    'placeholder' => __('site.news_letter.title.placeholder', [
+                                    'placeholder' => __('site.fields.title.placeholder', [
                                         'lang' => $locale,
                                     ]),
-                                    'help' => __('site.news_letter.title.help', [
+                                    'help' => __('site.fields.title.help', [
                                         'lang' => $locale,
                                     ]),
                                     'icon' => 'bx bxs-chevron-right',
@@ -73,13 +73,13 @@
                             <div class="m-2">
                                 @include('_partials.input', [
                                     '_id' => 'description_' . $locale,
-                                    'title' => __('site.news_letter.description.title', [
+                                    'title' => __('site.fields.description.title', [
                                         'lang' => $locale,
                                     ]),
-                                    'placeholder' => __('site.news_letter.description.placeholder', [
+                                    'placeholder' => __('site.fields.description.placeholder', [
                                         'lang' => $locale,
                                     ]),
-                                    'help' => __('site.news_letter.description.help', [
+                                    'help' => __('site.fields.description.help', [
                                         'lang' => $locale,
                                     ]),
                                     'icon' => 'bx bxs-chevron-right',
@@ -107,9 +107,9 @@
                     @include('_partials.uploadImage', [
                         'id' => 'manager_logo_' . $locale,
                         'name' => 'manager_logo_' . $locale,
-                        'title' => __('site.news_letter.manager_logo.title', ['lang' => $locale]),
-                        'placeholder' => __('site.news_letter.manager_logo.placeholder', ['lang' => $locale]),
-                        'help' => __('site.news_letter.manager_logo.help', ['lang' => $locale]),
+                        'title' => __('site.fields.manager_logo.title', ['lang' => $locale]),
+                        'placeholder' => __('site.fields.manager_logo.placeholder', ['lang' => $locale]),
+                        'help' => __('site.fields.manager_logo.help', ['lang' => $locale]),
                         'class' => 'file-upload-input-' . $locale,
                         'prifex' => $locale,
                         'src' => $data['manager_logo'] ?? '',
@@ -118,9 +118,9 @@
                     <div class="m-2">
                         @include('_partials.input', [
                             '_id' => 'manager_name_' . $locale,
-                            'title' => __('site.news_letter.manager_name.title', ['lang' => $locale]),
-                            'placeholder' => __('site.news_letter.manager_name.placeholder', ['lang' => $locale]),
-                            'help' => __('site.news_letter.manager_name.help', ['lang' => $locale]),
+                            'title' => __('site.fields.manager_name.title', ['lang' => $locale]),
+                            'placeholder' => __('site.fields.manager_name.placeholder', ['lang' => $locale]),
+                            'help' => __('site.fields.manager_name.help', ['lang' => $locale]),
                             'icon' => 'bx bxs-chevron-right',
                             'input_type' => 'text',
                             'input_name' => 'manager_name_' . $locale,
@@ -131,9 +131,9 @@
                     <div class="m-2">
                         @include('_partials.input', [
                             '_id' => 'info_manage_' . $locale,
-                            'title' => __('site.news_letter.info_manage.title', ['lang' => $locale]),
-                            'placeholder' => __('site.news_letter.info_manage.placeholder', ['lang' => $locale]),
-                            'help' => __('site.news_letter.info_manage.help', ['lang' => $locale]),
+                            'title' => __('site.fields.info_manage.title', ['lang' => $locale]),
+                            'placeholder' => __('site.fields.info_manage.placeholder', ['lang' => $locale]),
+                            'help' => __('site.fields.info_manage.help', ['lang' => $locale]),
                             'icon' => 'bx bxs-chevron-right',
                             'input_type' => 'text',
                             'input_name' => 'info_manage_' . $locale,
@@ -144,13 +144,13 @@
                     <div class="m-2">
                         @include('_partials.input', [
                             '_id' => 'description_of_the_manager_' . $locale,
-                            'title' => __('site.news_letter.description_of_the_manager.title', [
+                            'title' => __('site.fields.description_of_the_manager.title', [
                                 'lang' => $locale,
                             ]),
-                            'placeholder' => __('site.news_letter.description_of_the_manager.placeholder', [
+                            'placeholder' => __('site.fields.description_of_the_manager.placeholder', [
                                 'lang' => $locale,
                             ]),
-                            'help' => __('site.news_letter.description_of_the_manager.help', ['lang' => $locale]),
+                            'help' => __('site.fields.description_of_the_manager.help', ['lang' => $locale]),
                             'icon' => 'bx bxs-chevron-right',
                             'input_type' => 'text',
                             'input_name' => 'description_of_the_manager_' . $locale,

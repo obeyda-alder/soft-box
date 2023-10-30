@@ -338,6 +338,15 @@ header.pb .container {
 	max-width: 100%;
 	padding: 0 70px 0 250px;
 }
+.started {
+  width: 200px;
+  max-width: 200px;
+  overflow: hidden;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  line-height: unset !important;
+}
 header .container {
 	max-width: 100%;
 	padding: 0 70px 0 70px;
@@ -345,8 +354,6 @@ header .container {
 .logo {
 	float: left;
 	margin-top: 9px;
-  width: 75px;
-  height: 75px;
   overflow: hidden;
 }
 .logo img {
@@ -372,16 +379,41 @@ nav ul li a {
 	font-size: 18px;
 	font-family: 'Muli', sans-serif;
 }
+
 .right-side-hd {
 	float: right;
 }
+
 .right-side-hd > span {
 	display: inline-block;
 	color: #FFFFFF;
-	font-size: 20px;
+	font-size: 18px;
 	font-family: 'Muli', sans-serif;
 	margin-right: 57px;
 }
+
+.select-lang {
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background: inherit;
+  color: #fff;
+  padding: 10px;
+  appearance: none;
+}
+
+.select-lang option {
+  background: #070a11;
+  color: #fff;
+}
+
+.side-hd {
+	display: inline-block;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-family: 'Muli', sans-serif;
+  margin: 16px;
+}
+
 .btn-default {
 	display: inline-block;
 	color: #FFFFFF;
@@ -414,7 +446,7 @@ button.btn-default {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #191b27;
+	background-color: #020203;
 	opacity: 0.7;
 }
 header .menu-btn {
@@ -1012,6 +1044,9 @@ header .menu-btn {
 	float: left;
 	display: table-cell;
 	position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
 }
 .meta {
 	margin-bottom: 13px;
@@ -1057,15 +1092,18 @@ header .menu-btn {
 	float: none;
 	width: 100%;
 	display: block;
+  height: 100%;
 }
 .blog_post.main .blog-thumbnail > img {
 	width: 100%;
+  height: 100%;
 }
 .blog_post.main {
 	position: relative;
-	margin-top: 128px;
+	margin-top: 209px;
 	display: block;
 	margin-left: 112px;
+  height: 550px;
 }
 .blog_post.main .blog_info {
 	width: 100%;

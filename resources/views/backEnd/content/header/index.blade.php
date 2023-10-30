@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-lg-4 col-md-6">
-        <small class="fw-semibold fs-3">@lang('site.header.create_slide')</small>
+        <small class="fw-semibold fs-3">@lang('site.fields.create_slide.title')</small>
         <div class="mt-3">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCenter">
                 @lang('admin.create')
@@ -13,7 +13,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalCenterTitle">@lang('site.header.create_slide')</h5>
+                            <h5 class="modal-title" id="modalCenterTitle">@lang('site.fields.create_slide.title')</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -27,26 +27,26 @@
                                             @include('_partials.uploadImage', [
                                                 'id' => 'image_' . $locale,
                                                 'name' => 'slid_image_' . $locale,
-                                                'title' => __('site.header.logo.title', ['lang' => $locale]),
-                                                'placeholder' => __('site.header.logo.placeholder', [
+                                                'title' => __('site.fields.logo.title', ['lang' => $locale]),
+                                                'placeholder' => __('site.fields.logo.placeholder', [
                                                     'lang' => $locale,
                                                 ]),
-                                                'help' => __('site.header.logo.help', ['lang' => $locale]),
+                                                'help' => __('site.fields.logo.help', ['lang' => $locale]),
                                                 'class' => 'file-upload-input-' . $locale,
                                                 'prifex' => $locale,
                                             ])
                                             <div class="m-2">
                                                 @include('_partials.input', [
                                                     '_id' => 'slide_small_title_' . $locale,
-                                                    'title' => __('site.header.slide_small_title.title', [
+                                                    'title' => __('site.fields.slide_small_title.title', [
                                                         'lang' => $locale,
                                                     ]),
                                                     'placeholder' => __(
-                                                        'site.header.slide_small_title.placeholder',
+                                                        'site.fields.slide_small_title.placeholder',
                                                         [
                                                             'lang' => $locale,
                                                         ]),
-                                                    'help' => __('site.header.slide_small_title.help', [
+                                                    'help' => __('site.fields.slide_small_title.help', [
                                                         'lang' => $locale,
                                                     ]),
                                                     'icon' => 'bx bxs-chevron-right',
@@ -58,13 +58,13 @@
                                             <div class="m-2">
                                                 @include('_partials.input', [
                                                     '_id' => 'slide_title_' . $locale,
-                                                    'title' => __('site.header.slide_title.title', [
+                                                    'title' => __('site.fields.slide_title.title', [
                                                         'lang' => $locale,
                                                     ]),
-                                                    'placeholder' => __('site.header.slide_title.placeholder', [
+                                                    'placeholder' => __('site.fields.slide_title.placeholder', [
                                                         'lang' => $locale,
                                                     ]),
-                                                    'help' => __('site.header.slide_title.help', [
+                                                    'help' => __('site.fields.slide_title.help', [
                                                         'lang' => $locale,
                                                     ]),
                                                     'icon' => 'bx bxs-chevron-right',
@@ -76,15 +76,15 @@
                                             <div class="m-2">
                                                 @include('_partials.input', [
                                                     '_id' => 'slide_description_' . $locale,
-                                                    'title' => __('site.header.slide_description.title', [
+                                                    'title' => __('site.fields.slide_description.title', [
                                                         'lang' => $locale,
                                                     ]),
                                                     'placeholder' => __(
-                                                        'site.header.slide_description.placeholder',
+                                                        'site.fields.slide_description.placeholder',
                                                         [
                                                             'lang' => $locale,
                                                         ]),
-                                                    'help' => __('site.header.slide_description.help', [
+                                                    'help' => __('site.fields.slide_description.help', [
                                                         'lang' => $locale,
                                                     ]),
                                                     'icon' => 'bx bxs-chevron-right',

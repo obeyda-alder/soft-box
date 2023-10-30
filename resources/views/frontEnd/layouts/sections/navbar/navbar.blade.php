@@ -1,8 +1,8 @@
  <header class="pb">
      <div class="container">
          @if ($data['logo'] && $data['siteNavbar'] && $data['siteNavbarItem'])
-             <div class="header-content">
-                 <div class="logo">
+             <div class="header-content row">
+                 <div class="col-md-1 logo d-flex justify-content-center align-items-center m-0 p-0">
                      <a href="{{ route('web:home') }}" title="">
                          @if (isset($data['logo']))
                              <img src="{{ $data['logo'] }}" alt="">
@@ -11,18 +11,30 @@
                          @endif
                      </a>
                  </div>
-                 <nav>
+                 <nav class="col-md-7 d-flex justify-content-center align-items-center m-0 p-0">
                      <ul>
                          @foreach ($data['siteNavbarItem'] as $item)
-                             <li><a href="services.html" title="">{{ $item->title }}</a></li>
+                             <li><a href="javascript:;" title="">{{ $item->title }}</a></li>
                          @endforeach
                      </ul>
                  </nav>
-                 <div class="right-side-hd">
-                     <span>{{ $data['siteNavbar']->phone_number }}</span>
-                     <a href="#" title="" class="btn-default">{{ $data['siteNavbar']->key_contact }}</a>
+                 <div class="col-md-4 d-flex justify-content-center align-items-center m-0 p-0">
+                     <select class="form-select select-lang" onchange="selectLang(this)"
+                         aria-label="Default select example">
+                         @foreach ($data['siteLanguages'] as $item)
+                             <option value="{{ $item->code }}" {{ $data['locale'] == $item->code ? 'selected' : '' }}>
+                                 {{ $item->name }}</option>
+                         @endforeach
+                     </select>
+
+                     <span class="side-hd">{{ $data['siteNavbar']->phone_number }}</span>
+
+                     <a href="javascript:;"
+                         class="btn-default started">{{ substr($data['siteNavbar']->key_contact, 0, 20) }}</a>
                  </div>
-                 <a href="#" title="" class="menu-btn">
+
+
+                 <a href="javascript:;" title="" class="menu-btn">
                      <svg width="34" height="34" viewBox="0 0 34 34" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                          <path

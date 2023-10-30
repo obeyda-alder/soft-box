@@ -10,7 +10,7 @@
                     </div>
                     <form class="newsletter-form">
                         <input type="email" name="email" placeholder="Email">
-                        <button type="submit"><img src="{{ asset('assets/img/frontEnd/images/send.svg') }}"
+                        <button type="button"><img src="{{ asset('assets/img/frontEnd/images/send.svg') }}"
                                 alt=""></button>
                     </form>
                     <div class="clearfix"></div>

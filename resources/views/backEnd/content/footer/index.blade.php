@@ -9,7 +9,7 @@
             @csrf
             <div class="col-xl-12 col-md-12">
                 <h6 class="text-muted">
-                    <h1 class="fw-semibold fs-3">@lang('site.footer.details')</h1>
+                    <h1 class="fw-semibold fs-3">@lang('menu.footer.title')</h1>
                 </h6>
 
                 <div class="nav-align-top mb-4">
@@ -35,13 +35,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'copy_right_' . $locale,
-                                        'title' => __('site.footer.copy_right.title', [
+                                        'title' => __('site.fields.copy_right.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.footer.copy_right.placeholder', [
+                                        'placeholder' => __('site.fields.copy_right.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.footer.copy_right.help', [
+                                        'help' => __('site.fields.copy_right.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -54,13 +54,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'phone_number_' . $locale,
-                                        'title' => __('site.footer.phone_number.title', [
+                                        'title' => __('site.fields.phone_number.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.footer.phone_number.placeholder', [
+                                        'placeholder' => __('site.fields.phone_number.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.footer.phone_number.help', [
+                                        'help' => __('site.fields.phone_number.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -73,13 +73,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'working_hours_' . $locale,
-                                        'title' => __('site.footer.working_hours.title', [
+                                        'title' => __('site.fields.working_hours.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.footer.working_hours.placeholder', [
+                                        'placeholder' => __('site.fields.working_hours.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.footer.working_hours.help', [
+                                        'help' => __('site.fields.working_hours.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -92,13 +92,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'address_' . $locale,
-                                        'title' => __('site.footer.address.title', [
+                                        'title' => __('site.fields.address.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.footer.address.placeholder', [
+                                        'placeholder' => __('site.fields.address.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.footer.address.help', [
+                                        'help' => __('site.fields.address.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -111,13 +111,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'email_' . $locale,
-                                        'title' => __('site.footer.email.title', [
+                                        'title' => __('site.fields.email.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.footer.email.placeholder', [
+                                        'placeholder' => __('site.fields.email.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.footer.email.help', [
+                                        'help' => __('site.fields.email.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',

@@ -23,7 +23,7 @@
                                     <img src="{{ $slider->logo }}" alt="">
                                 </div>
                                 <h3>{{ $slider->title }}</h3>
-                                <a href="services.html" title="" class="btn-default2">read more</a>
+                                <a href="javascript:;" title="" class="btn-default2">read more</a>
                             </div>
                         </div>
                     @endforeach

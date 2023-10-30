@@ -9,7 +9,7 @@
             @csrf
             <div class="col-xl-12 col-md-12">
                 <h6 class="text-muted">
-                    <h1 class="fw-semibold fs-3">@lang('site.our_services.details')</h1>
+                    <h1 class="fw-semibold fs-3">@lang('menu.our_services.title')</h1>
                 </h6>
 
                 <div class="nav-align-top mb-4">
@@ -35,13 +35,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'small_title_' . $locale,
-                                        'title' => __('site.our_services.small_title.title', [
+                                        'title' => __('site.fields.small_title.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.our_services.small_title.placeholder', [
+                                        'placeholder' => __('site.fields.small_title.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.our_services.small_title.help', [
+                                        'help' => __('site.fields.small_title.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -54,13 +54,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'title_' . $locale,
-                                        'title' => __('site.our_services.title.title', [
+                                        'title' => __('site.fields.title.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.our_services.title.placeholder', [
+                                        'placeholder' => __('site.fields.title.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.our_services.title.help', [
+                                        'help' => __('site.fields.title.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -73,13 +73,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'description_' . $locale,
-                                        'title' => __('site.our_services.description.title', [
+                                        'title' => __('site.fields.description.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.our_services.description.placeholder', [
+                                        'placeholder' => __('site.fields.description.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.our_services.description.help', [
+                                        'help' => __('site.fields.description.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -97,12 +97,12 @@
         <hr />
 
         <div class="row our_services_sliders">
-            <h1> @lang('site.our_services.create_sliders')</h1>
+            <h1> @lang('site.fields.create_sliders.title')</h1>
             <div class="col-md-12 mb-2">
                 <div class="col-md-4">
                     <button type="button" onclick="addMoreSliders()" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#modalCenter">
-                        @lang('site.our_services.create_sliders')
+                        @lang('site.fields.create_sliders.title')
                     </button>
                 </div>
             </div>
@@ -253,9 +253,9 @@
                                 @include('_partials.uploadImage', [
                                     'id' => 'logo_slider_' . $locale,
                                     'name' => 'logo_slider[' . $locale . '][]',
-                                    'title' => __('site.our_services.logo.title', ['lang' => $locale]),
-                                    'placeholder' => __('site.our_services.logo.placeholder', ['lang' => $locale]),
-                                    // 'help' => __('site.our_services.logo.help', ['lang' => $locale]),
+                                    'title' => __('site.fields.logo.title', ['lang' => $locale]),
+                                    'placeholder' => __('site.fields.logo.placeholder', ['lang' => $locale]),
+                                    // 'help' => __('site.fields.logo.help', ['lang' => $locale]),
                                     'class' => 'file-upload-input-' . $locale,
                                     'prifex' => '${randomString}-' . $locale,
                                 ])
@@ -263,11 +263,11 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'slide_title_' . $locale,
-                                        'title' => __('site.our_services.slide_title.title', ['lang' => $locale]),
-                                        'placeholder' => __('site.our_services.slide_title.placeholder', [
+                                        'title' => __('site.fields.slide_title.title', ['lang' => $locale]),
+                                        'placeholder' => __('site.fields.slide_title.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.our_services.slide_title.help', ['lang' => $locale]),
+                                        'help' => __('site.fields.slide_title.help', ['lang' => $locale]),
                                         'icon' => 'bx bxs-chevron-right',
                                         'input_type' => 'text',
                                         'input_name' => 'slide_title[' . $locale . '][]',
@@ -309,11 +309,11 @@
                 const uploadImageHTML = `@include('_partials.uploadImage', [
                     'id' => 'logo_slider_' . '${locale}',
                     'name' => 'logo_slider[' . '${locale}' . '][]',
-                    'title' => __('site.our_services.logo.title', ['lang' => '${locale}']),
-                    'placeholder' => __('site.our_services.logo.placeholder', [
+                    'title' => __('site.fields.logo.title', ['lang' => '${locale}']),
+                    'placeholder' => __('site.fields.logo.placeholder', [
                         'lang' => '${locale}',
                     ]),
-                    // 'help' => __('site.our_services.logo.help', ['lang' => '${locale}']),
+                    // 'help' => __('site.fields.logo.help', ['lang' => '${locale}']),
                     'class' => 'file-upload-input-' . '${locale}',
                     'prifex' => '${randomString}-' . '${locale}',
                     'src' => '',
@@ -321,13 +321,13 @@
 
                 const inputHTML = `@include('_partials.input', [
                     '_id' => 'slide_title_' . '${locale}',
-                    'title' => __('site.our_services.slide_title.title', [
+                    'title' => __('site.fields.slide_title.title', [
                         'lang' => '${locale}',
                     ]),
-                    'placeholder' => __('site.our_services.slide_title.placeholder', [
+                    'placeholder' => __('site.fields.slide_title.placeholder', [
                         'lang' => '${locale}',
                     ]),
-                    'help' => __('site.our_services.slide_title.help', [
+                    'help' => __('site.fields.slide_title.help', [
                         'lang' => '${locale}',
                     ]),
                     'icon' => 'bx bxs-chevron-right',

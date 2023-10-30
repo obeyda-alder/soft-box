@@ -23,12 +23,12 @@ return [
           "slug" => 'admin:users'
         ],
         [
-          "url" => route('admin:users', ['type' => 'admin']),
+          "url" => route('admin:users', ['type' => 'ADMIN']),
           "name" => __('menu.users.admin'),
           "slug" => 'admin:users?type=admin'
         ],
         [
-          "url" => route('admin:users', ['type' => 'customer']),
+          "url" => route('admin:users', ['type' => 'CUSTOMER']),
           "name" => __('menu.users.customer'),
           "slug" => 'admin:users?type=customer'
         ]
@@ -84,6 +84,12 @@ return [
       "name" => __('menu.latest_in_crope.title'),
       "icon" => "menu-icon tf-icons bx bxs-layer-minus",
       "slug" => "admin:latest-in-crope",
+    ],
+    [
+      "url" => route('admin:blogs'),
+      "name" => __('menu.blogs.title'),
+      "icon" => "menu-icon tf-icons bx bxl-blogger",
+      "slug" => "admin:blogs",
     ],
     [
       "url" => route('admin:news-letter'),

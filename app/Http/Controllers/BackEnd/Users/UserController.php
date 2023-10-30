@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\BackEnd\Users;
 
+use Exception;
 use App\Models\User;
+use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
@@ -54,7 +56,7 @@ class UserController extends Controller
             $actions[] = [
               'id'            => $user->id,
               'label'         => __('admin.edit'),
-              'link'          => route('admin:users:edit', ['user' => $user]),
+              'link'          => route('admin:users:show', ['user' => $user]),
               'method'        => 'GET',
               'type'          => 'icon',
               'class'         => 'edit-icons',
@@ -64,7 +66,7 @@ class UserController extends Controller
             $actions[] = [
               'id'            => $user->id,
               'label'         => __('admin.delete'),
-              'link'          => route('admin:users:delete', ['user' => $user]),
+              'link'          => route('admin:users:delete', ['user' => $user->id]),
               'method'        => 'DELETE',
               'type'          => 'icon',
               'class'         => 'edit-icons',
@@ -75,7 +77,7 @@ class UserController extends Controller
             $actions[] = [
               'id'            => $user->id,
               'label'         => __('admin.restore'),
-              'link'          => route('admin:users:restore', ['user' => $user]),
+              'link'          => route('admin:users:restore', ['user' => $user->id]),
               'method'        => 'PUT',
               'type'          => 'icon',
               'class'         => 'restore-icons',
@@ -85,7 +87,7 @@ class UserController extends Controller
             $actions[] = [
               'id'            => $user->id,
               'label'         => __('admin.destroy'),
-              'link'          => route('admin:users:destroy', ['user' => $user]),
+              'link'          => route('admin:users:destroy', ['user' => $user->id]),
               'method'        => 'DELETE',
               'type'          => 'icon',
               'class'         => 'destroy-icons',
@@ -104,12 +106,17 @@ class UserController extends Controller
     return view('backEnd.content.users.create', compact('type'));
   }
 
-  public function store(Request $request, $type)
+  public function store(Request $request)
   {
     $validator = Validator::make($request->all(), [
-      'name'      => 'required|string|max:255',
-      'email'     => 'required|email|max:255|unique:users',
-      'password'  => 'required|string|min:8',
+      'name'        => 'required|string|max:255',
+      'email'       => 'required|email|max:255|unique:users',
+      'password'    => 'required|string|min:8',
+      'phone'       => 'required|string|min:8',
+      'type'        => 'required|string|in:' . implode(",", config('variables.type')),
+      'status'      => 'required|string|in:' . implode(",", config('variables.status')),
+      'user_image'  => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
+
     ]);
 
     if ($validator->fails()) {
@@ -120,132 +127,131 @@ class UserController extends Controller
       }
       return response()->json($toReturn, 200);
     }
+
+    try {
+      $user                = new User;
+      $user->name          = $request->name;
+      $user->email         = $request->email;
+      $user->password      = $request->password;
+      $user->type          = $request->type;
+      $user->phone_number  = $request->phone;
+      $user->status        = $request->status;
+
+      if ($request->hasFile('user_image')) {
+        $user->image = ImageHelper::UploadWithResizeImage($request->file('user_image'), 'users');
+      }
+
+      $user->save();
+
+      return response()->json([
+        'success' => true,
+        'message' => 'successfully saved',
+        'redirect_url'  => route('admin:users', ['type' => $request->type])
+      ], 200);
+    } catch (Exception $e) {
+      return response()->json([
+        'error' => $e->getMessage(),
+        'message' => 'you hava some error'
+      ], 401);
+    }
   }
 
   public function show(Request $request, User $user)
   {
-  }
-  public function edit(Request $request, User $user)
-  {
     return view('backEnd.content.users.edit', compact('user'));
   }
-  public function delete(Request $request, User $user)
+
+  public function edit(Request $request, User $user)
   {
+    $validator = Validator::make($request->all(), [
+      'name'        => 'required|string|max:255',
+      'email'       => 'required|email|max:255|unique:users,id,' . $user->id,
+      'password'    => 'nullable|string|min:8',
+      'phone'       => 'required|string|min:8',
+      'type'        => 'required|string|in:' . implode(",", config('variables.type')),
+      'status'      => 'required|string|in:' . implode(",", config('variables.status')),
+      'user_image'  => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
+
+    ]);
+
+    if ($validator->fails()) {
+      $toReturn['message']               = 'fail';
+      $messages = $validator->messages()->toArray();
+      foreach ($messages as $key => $value) {
+        $toReturn['errors'][$key] = $value[0];
+      }
+      return response()->json($toReturn, 200);
+    }
+
+    try {
+      $user                = User::findOrFail($user->id);
+      $user->name          = $request->name;
+      $user->email         = $request->email;
+      $user->phone_number  = $request->phone;
+      $user->type          = $request->type;
+      $user->status        = $request->status;
+
+      if ($request->has('password')) {
+        $user->password      = $request->password;
+      }
+
+      if ($request->hasFile('user_image')) {
+        ImageHelper::deleteImg('users', $user->getRawOriginal('image'));
+        $user->image = ImageHelper::UploadWithResizeImage($request->file('user_image'), 'users');
+      }
+
+      $user->save();
+
+      return response()->json([
+        'success' => true,
+        'message' => 'successfully saved',
+        'redirect_url'  => route('admin:users', ['type' => $request->type])
+      ], 200);
+    } catch (Exception $e) {
+      return response()->json([
+        'error' => $e->getMessage(),
+        'message' => 'you hava some error'
+      ], 401);
+    }
   }
-  public function restore(Request $request, User $user)
+
+  public function delete($user)
   {
+    try {
+      $user = User::withTrashed()->findOrFail($user);
+      $user->delete();
+    } catch (Exception $e) {
+      return response()->json([
+        'error' => $e->getMessage(),
+        'message' => 'you hava some error'
+      ], 401);
+    }
   }
-  public function destroy(Request $request, User $user)
+
+  public function restore($user)
   {
+    try {
+      $user = User::withTrashed()->findOrFail($user);
+      $user->restore();
+    } catch (Exception $e) {
+      return response()->json([
+        'error' => $e->getMessage(),
+        'message' => 'you hava some error'
+      ], 401);
+    }
   }
 
-  // public function create($user)
-  // {
-  //   try {
-  //     $create_user               = new User;
-  //     $create_user->first_name   = $user['first_name'];
-  //     $create_user->last_name    = $user['last_name'];
-  //     $create_user->email        = $user['email'];
-  //     $create_user->status       = $user['status'];
-  //     $create_user->phone_number = $user['phone_number'];
-  //     $create_user->password     = $user['password'];
-  //     $create_user->type         = $user['type'];
-
-  //     if (!empty($user['image'])) {
-  //       $create_user->image = ImageHelper::UploadWithResizeImage($user['image'], 'users', ImageSize::USERS);
-  //     }
-
-  //     $create_user->assignRole($user['role']);
-  //     $create_user->save();
-  //     return $create_user;
-  //   } catch (Exception $e) {
-  //     return response()->json([
-  //       'error' => $e->getMessage(),
-  //       'message' => 'you hava some error'
-  //     ], 401);
-  //   }
-  // }
-
-  // public function findById($id)
-  // {
-  //   try {
-  //     return User::withTrashed()->findOrFail($id);
-  //   } catch (Exception $e) {
-  //     return response()->json([
-  //       'error' => $e->getMessage(),
-  //       'message' => 'you hava some error'
-  //     ], 401);
-  //   }
-  // }
-
-  // public function update($data, int $user)
-  // {
-  //   try {
-  //     $update_user               = $this->findById($user);
-  //     $update_user->first_name   = $data['first_name'];
-  //     $update_user->last_name    = $data['last_name'];
-  //     $update_user->email        = $data['email'];
-  //     $update_user->status       = $data['status'];
-  //     $update_user->phone_number = $data['phone_number'];
-  //     $update_user->type         = $data['type'];
-
-  //     if (isset($data['password'])) {
-  //       $update_user->password = $data['password'];
-  //     }
-
-  //     if (!empty($data['image'])) {
-  //       ImageHelper::deleteImg('users', $update_user->getRawOriginal('image'), ImageSize::USERS);
-  //       $update_user->image = ImageHelper::UploadWithResizeImage($data['image'], 'users', ImageSize::USERS);
-  //     }
-
-  //     $update_user->syncRoles($data['role']);
-  //     $update_user->save();
-  //     return $update_user;
-  //   } catch (Exception $e) {
-  //     return response()->json([
-  //       'error' => $e->getMessage(),
-  //       'message' => 'you hava some error'
-  //     ], 401);
-  //   }
-  // }
-
-  // public function softDelete($user)
-  // {
-  //   try {
-  //     $user = $this->findById($user);
-  //     $user->delete();
-  //   } catch (Exception $e) {
-  //     return response()->json([
-  //       'error' => $e->getMessage(),
-  //       'message' => 'you hava some error'
-  //     ], 401);
-  //   }
-  // }
-
-  // public function restore($user)
-  // {
-  //   try {
-  //     $user = $this->findById($user);
-  //     $user->restore();
-  //   } catch (Exception $e) {
-  //     return response()->json([
-  //       'error' => $e->getMessage(),
-  //       'message' => 'you hava some error'
-  //     ], 401);
-  //   }
-  // }
-
-  // public function destroy($user)
-  // {
-  //   try {
-  //     $user = $this->findById($user);
-  //     $user->forceDelete();
-  //     ImageHelper::deleteImg('users', $user->getRawOriginal('image'), ImageSize::USERS);
-  //   } catch (Exception $e) {
-  //     return response()->json([
-  //       'error' => $e->getMessage(),
-  //       'message' => 'you hava some error'
-  //     ], 401);
-  //   }
-  // }
+  public function destroy($user)
+  {
+    try {
+      $user = User::withTrashed()->findOrFail($user);
+      $user->forceDelete();
+      ImageHelper::deleteImg('users', $user->getRawOriginal('image'));
+    } catch (Exception $e) {
+      return response()->json([
+        'error' => $e->getMessage(),
+        'message' => 'you hava some error'
+      ], 401);
+    }
+  }
 }

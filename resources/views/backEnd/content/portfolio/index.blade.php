@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-xl-12 col-md-12 element mb-3">
                 <h6 class="text-muted">
-                    <h1 class="fw-semibold fs-3">@lang('site.portfolios.details')</h1>
+                    <h1 class="fw-semibold fs-3">@lang('menu.portfolio.title')</h1>
                 </h6>
 
                 <div class="nav-align-top mb-4">
@@ -35,13 +35,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'small_title_' . $locale,
-                                        'title' => __('site.portfolios.small_title.title', [
+                                        'title' => __('site.fields.small_title.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.portfolios.small_title.placeholder', [
+                                        'placeholder' => __('site.fields.small_title.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.portfolios.small_title.help', [
+                                        'help' => __('site.fields.small_title.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -54,13 +54,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'title_' . $locale,
-                                        'title' => __('site.portfolios.title.title', [
+                                        'title' => __('site.fields.title.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.portfolios.title.placeholder', [
+                                        'placeholder' => __('site.fields.title.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.portfolios.title.help', [
+                                        'help' => __('site.fields.title.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -73,13 +73,13 @@
                                 <div class="m-2">
                                     @include('_partials.input', [
                                         '_id' => 'description_' . $locale,
-                                        'title' => __('site.portfolios.description.title', [
+                                        'title' => __('site.fields.description.title', [
                                             'lang' => $locale,
                                         ]),
-                                        'placeholder' => __('site.portfolios.description.placeholder', [
+                                        'placeholder' => __('site.fields.description.placeholder', [
                                             'lang' => $locale,
                                         ]),
-                                        'help' => __('site.portfolios.description.help', [
+                                        'help' => __('site.fields.description.help', [
                                             'lang' => $locale,
                                         ]),
                                         'icon' => 'bx bxs-chevron-right',
@@ -101,7 +101,7 @@
     <div class="row">
         <div class="col-md-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exLargeModal">
-                @lang('site.portfolios.add_tab')
+                @lang('site.fields.add_tab.title')
             </button>
         </div>
 
@@ -109,7 +109,7 @@
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel4">@lang('site.portfolios.tab_title')</h5>
+                        <h5 class="modal-title" id="exampleModalLabel4">@lang('site.fields.tab_title.title')</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -122,13 +122,13 @@
                                         @include('_partials.uploadImage', [
                                             'id' => 'tab_image_' . $locale,
                                             'name' => 'tab_image_' . $locale,
-                                            'title' => __('site.portfolios.tab_image.title', [
+                                            'title' => __('site.fields.tab_image.title', [
                                                 'lang' => $locale,
                                             ]),
-                                            'placeholder' => __('site.portfolios.tab_image.placeholder', [
+                                            'placeholder' => __('site.fields.tab_image.placeholder', [
                                                 'lang' => $locale,
                                             ]),
-                                            'help' => __('site.portfolios.logo.help', ['lang' => $locale]),
+                                            'help' => __('site.fields.logo.help', ['lang' => $locale]),
                                             'class' => 'file-upload-input-' . $locale,
                                             'prifex' => $locale,
                                         ])
@@ -136,13 +136,13 @@
                                         <div class="m-2">
                                             @include('_partials.input', [
                                                 '_id' => 'tab_title_' . $locale,
-                                                'title' => __('site.portfolios.tab_title.title', [
+                                                'title' => __('site.fields.tab_title.title', [
                                                     'lang' => $locale,
                                                 ]),
-                                                'placeholder' => __('site.portfolios.tab_title.placeholder', [
+                                                'placeholder' => __('site.fields.tab_title.placeholder', [
                                                     'lang' => $locale,
                                                 ]),
-                                                'help' => __('site.portfolios.tab_title.help', [
+                                                'help' => __('site.fields.tab_title.help', [
                                                     'lang' => $locale,
                                                 ]),
                                                 'icon' => 'bx bxs-chevron-right',
@@ -154,13 +154,13 @@
                                         <div class="m-2">
                                             @include('_partials.input', [
                                                 '_id' => 'tab_name_' . $locale,
-                                                'title' => __('site.portfolios.tab_name.title', [
+                                                'title' => __('site.fields.tab_name.title', [
                                                     'lang' => $locale,
                                                 ]),
-                                                'placeholder' => __('site.portfolios.tab_name.placeholder', [
+                                                'placeholder' => __('site.fields.tab_name.placeholder', [
                                                     'lang' => $locale,
                                                 ]),
-                                                'help' => __('site.portfolios.tab_name.help', [
+                                                'help' => __('site.fields.tab_name.help', [
                                                     'lang' => $locale,
                                                 ]),
                                                 'icon' => 'bx bxs-chevron-right',
@@ -172,15 +172,13 @@
                                         <div class="m-2">
                                             @include('_partials.input', [
                                                 '_id' => 'tab_description_' . $locale,
-                                                'title' => __('site.portfolios.tab_description.title', [
+                                                'title' => __('site.fields.tab_description.title', [
                                                     'lang' => $locale,
                                                 ]),
-                                                'placeholder' => __(
-                                                    'site.portfolios.tab_description.placeholder',
-                                                    [
-                                                        'lang' => $locale,
-                                                    ]),
-                                                'help' => __('site.portfolios.tab_description.help', [
+                                                'placeholder' => __('site.fields.tab_description.placeholder', [
+                                                    'lang' => $locale,
+                                                ]),
+                                                'help' => __('site.fields.tab_description.help', [
                                                     'lang' => $locale,
                                                 ]),
                                                 'icon' => 'bx bxs-chevron-right',
@@ -295,10 +293,8 @@
                                               </div>
                                           </div>
                                       </div>`;
-                        console.log(card);
                     });
                     $('.cards').html(cards);
-                    console.log(response);
                 },
                 error: function(error) {
                     console.error(error);

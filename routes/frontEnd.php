@@ -18,6 +18,7 @@ Route::get('/', function () {
   return redirect()->route('web:home');
 });
 
-Route::name('web:')->group(function () {
+Route::middleware('check.site.status')->name('web:')->group(function () {
   Route::get('home', [HomeController::class, 'index'])->name('home');
+  Route::post('select-lang', [HomeController::class, 'selectLang'])->name('select-lang');
 });
